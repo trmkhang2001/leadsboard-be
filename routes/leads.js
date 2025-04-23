@@ -11,7 +11,7 @@ const {
     resetLead,
 } = require("../controllers/leadController");
 
-router.post("/init", auth, initLead);
+router.post("/init", initLead);
 router.get("/", getLead);
 router.put("/target", auth, updateTarget);
 router.post("/add", auth, addLeads);
