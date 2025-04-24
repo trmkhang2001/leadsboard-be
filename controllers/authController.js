@@ -42,14 +42,14 @@ exports.login = async (req, res) => {
     res
         .cookie("accessToken", accessToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "strict",
+            secure: true,
+            sameSite: "None",
             maxAge: 15 * 60 * 1000,
         })
         .cookie("refreshToken", refreshToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "strict",
+            secure: true,
+            sameSite: "None",
             maxAge: 7 * 24 * 60 * 60 * 1000,
         })
         .json({ message: "Login successful" });
@@ -77,8 +77,8 @@ exports.refreshToken = (req, res) => {
 
         res.cookie("accessToken", newAccessToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "strict",
+            secure: true,
+            sameSite: "None",
             maxAge: 15 * 60 * 1000,
         });
 

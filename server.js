@@ -8,13 +8,27 @@ const leadRoutes = require("./routes/leads");
 
 dotenv.config();
 const app = express();
-
-app.use(
-    cors({
-        origin: "https://leadsboard-fe.vercel.app",
-        credentials: true,
-    })
-);
+const allowedOrigins = [
+    "https://leadsboard-fe.vercel.app",
+    "http://localhost:5173",
+    "http://muctieuads.online"
+];
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+}));
+// app.use(
+//     cors({
+//         origin: "https://leadsboard-fe.vercel.app",
+//         credentials: true,
+//     })
+// );
 app.use(express.json());
 app.use(cookieParser());
 
