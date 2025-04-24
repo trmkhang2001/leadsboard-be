@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: "https://leadsboard-fe.vercel.app",
         credentials: true,
     })
 );
